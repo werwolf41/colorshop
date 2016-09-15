@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+
+
 /**
  * CategoryController implements the CRUD actions for Category model.
  */
@@ -37,6 +39,7 @@ class CategoryController extends Controller
     {
         $searchModel = new CategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination->pageSize=20;
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -51,8 +54,14 @@ class CategoryController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        if($model->status == 1){
+            $model->status = 'Включена';
+        }else{
+            $model->status = 'Отключена';
+        }
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
@@ -101,9 +110,14 @@ class CategoryController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $count = Category::find()->where(['parentId'=>$id])->count();
+        if($count == 0) {
+            $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+            return $this->redirect(['index']);
+        }else{
+            return $this->redirect(['view', 'id'=>$id]);
+        }
     }
 
     /**

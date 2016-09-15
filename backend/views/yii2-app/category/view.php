@@ -2,46 +2,80 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use common\models\Category;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Category */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Категории', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="category-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+    <div class="box box-primary">
+        <div class="box-body pad table-responsive">
+            <div class="pull-left">
+                <?= Html::a('Обновиь', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
+                    'class' => 'btn btn-danger',
+                    'data' => [
+                        'confirm' => 'Вы уверены, что хотите удалить эту каьегорию?',
+                        'method' => 'post',
+                    ],
+                ]) ?>
+            </div>
+            <div class="pull-right">
+                <?= Html::a('Назад', '/admin/category', ['class'=>'btn btn-danger'])?>
+            </div>
+        </div>
+    </div>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            //'id',
+            [
+                'attribute'=>'image',
+                'value'=>$model->image,
+                'format' => ['image',[
+                    'width' => 200,
+                    'alt' => $model->name,
+                    'class'=>'img-responsive'
+                ]],
+            ],
             'name',
-            'description',
-            'parentId',
-            'image',
+            'description:html',
+            'parent.name',
             'status',
             'metatitle',
             'metaDescription',
             'keywords',
             'alias',
             'sort',
-            'created_at',
-            'update_at',
+            'created_at:dateTime',
+            'update_at:dateTime',
         ],
     ]) ?>
+
+    <div class="box box-primary">
+        <div class="box-body pad table-responsive">
+            <div class="pull-left">
+                <?= Html::a('Обновиь', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
+                    'class' => 'btn btn-danger',
+                    'data' => [
+                        'confirm' => 'Вы уверены, что хотите удалить эту каьегорию?',
+                        'method' => 'post',
+                    ],
+                ]) ?>
+            </div>
+            <div class="pull-right">
+                <?= Html::a('Назад', '/admin/category', ['class'=>'btn btn-danger'])?>
+            </div>
+        </div>
+    </div>
 
 </div>

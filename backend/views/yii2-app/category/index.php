@@ -22,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -29,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'image',
                 'filter'=> '',
                 'value'=>function($model) {
-                  return  Html::img( $model->image, ['width' => 200, 'alt' => $model->name]);
+                  return  Html::img( $model->image, ['width' => 100, 'alt' => $model->name, 'class'=>'img-responsive']);
                 },
                 'format'=>'raw',
             ],
@@ -60,11 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     '0'=>'Отключена',
                 ],
                 'value'=>function($model){
-                    if($model->status == 1){
-                        return 'Включена';
-                    }else{
-                        return 'Отключена';
-                    }
+
                 },
             ],
             // 'metatitle',

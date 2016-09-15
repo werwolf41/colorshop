@@ -3,6 +3,9 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+
 
 /**
  * This is the model class for table "{{%category}}".
@@ -26,6 +29,8 @@ use Yii;
  */
 class Category extends \yii\db\ActiveRecord
 {
+
+
     /**
      * @inheritdoc
      */
@@ -43,6 +48,7 @@ class Category extends \yii\db\ActiveRecord
             [['parentId', 'status', 'sort', 'created_at', 'update_at'], 'integer'],
             [['name', 'description', 'image', 'metatitle', 'metaDescription', 'keywords', 'alias'], 'string', 'max' => 255],
             [['parentId'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['parentId' => 'id']],
+
         ];
     }
 
@@ -55,7 +61,7 @@ class Category extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Название',
             'description' => 'Описание',
-            'parentId' => 'Родительская категория',
+            'parent.name' => 'Родительская категория',
             'image' => 'Фото',
             'status' => 'Статус',
             'metatitle' => 'Title',
@@ -65,6 +71,22 @@ class Category extends \yii\db\ActiveRecord
             'sort' => 'Порядок сортировки',
             'created_at' => 'Создана',
             'update_at' => "Изменена",
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => 'created_at',
+                    ActiveRecord::EVENT_BEFORE_UPDATE => 'update_at',
+                ],
+                'value' => function() {
+                    return date('U'); // unix timestamp
+                },
+            ],
         ];
     }
 

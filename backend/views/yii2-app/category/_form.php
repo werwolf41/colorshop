@@ -10,7 +10,19 @@ use yii\bootstrap\Tabs;
 ?>
 
 <div class="category-form">
+
+
     <?php $form = ActiveForm::begin(); ?>
+    <div class="box box-primary">
+        <div class="box-body pad table-responsive">
+            <div class="pull-left">
+                <?= Html::submitButton($model->isNewRecord ? '<i class="fa fa-save"></i> Сохранить' : '<i class="fa fa-save"></i> Изменить', ['class'=>'btn btn-app']) ?>
+            </div>
+            <div class="pull-right">
+                <?= Html::a('Назад', '/admin/category', ['class'=>'btn btn-danger'])?>
+            </div>
+        </div>
+    </div>
 <div class="nav-tabs-custom">
   <?= Tabs::widget([
     'items' => [
@@ -40,8 +52,15 @@ use yii\bootstrap\Tabs;
   ?>
 </div>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Сохранить' : 'Изменить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    <div class="box box-primary">
+        <div class="box-body pad table-responsive">
+            <div class="pull-left">
+                <?= Html::submitButton($model->isNewRecord ? '<i class="fa fa-save"></i> Сохранить' : '<i class="fa fa-save"></i> Изменить', ['class'=>'btn btn-app']) ?>
+            </div>
+            <div class="pull-right">
+                <?= Html::a('Назад', '/admin/category', ['class'=>'btn btn-danger'])?>
+            </div>
+        </div>
     </div>
 
     <?php ActiveForm::end(); ?>
