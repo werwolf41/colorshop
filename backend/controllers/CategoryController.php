@@ -8,6 +8,7 @@ use backend\models\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Session;
 
 
 
@@ -55,11 +56,6 @@ class CategoryController extends Controller
     public function actionView($id)
     {
         $model = $this->findModel($id);
-        if($model->status == 1){
-            $model->status = 'Включена';
-        }else{
-            $model->status = 'Отключена';
-        }
         return $this->render('view', [
             'model' => $model,
         ]);
@@ -116,7 +112,8 @@ class CategoryController extends Controller
 
             return $this->redirect(['index']);
         }else{
-            return $this->redirect(['view', 'id'=>$id]);
+            Yii::$app->session->setFlash('error','test');
+            return $this->redirect(['view', 'id'=>$id ]);
         }
     }
 

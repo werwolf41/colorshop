@@ -5,15 +5,6 @@
 $this->title = 'My Yii Application';
 ?>
 
-
-
-
-
-
-
-
-
-
 <div class="content-wrapper"><div class="container">
         <div class="row">
             <div class="col-md-3"><div id="menu-home-helper"></div></div>

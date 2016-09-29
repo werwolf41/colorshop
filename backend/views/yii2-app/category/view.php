@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use common\models\Category;
+use dmstr\widgets\Alert;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Category */
@@ -11,9 +12,12 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Категории', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+
 <div class="category-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <?= Alert::widget()?>
 
     <div class="box box-primary">
         <div class="box-body pad table-responsive">
@@ -49,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'description:html',
             'parent.name',
-            'status',
+            'status:boolean',
             'metatitle',
             'metaDescription',
             'keywords',

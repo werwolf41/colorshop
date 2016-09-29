@@ -39,16 +39,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'name',
                 'filter'=>Category::find()->select(['name'])->indexBy('name')->column(),
                 'value' => function($model){
-                    $name = $model->name;
-                    if($model->parentId !=''){
-                        $p = array();
-                        $p[0] = $model->parentId;
-                        for($i=0; $p[$i]!=''; $i++){
-                            $res = Category::find()->select(['name', 'parentId'])->where(['id'=>$p[$i]])->one();
-                            $p[] = $res->parentId;
-                            $name = $res->name.' >>> '.$name;
-                        }
+                    $crumbs = [];
+                    $crumbs[] = $model->name;
+                    $parent = $model;
+                    while ($parent = $parent->parent) {
+                        $crumbs[] =  $parent->name;
                     }
+                    $name = implode(' > ', array_reverse($crumbs));
                     return $name;
                 },
             ],
@@ -61,7 +58,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     '0'=>'Отключена',
                 ],
                 'value'=>function($model){
-
+                    if($model->status == 1) return "Включена";
+                    else return "Отключена";
                 },
             ],
             // 'metatitle',
