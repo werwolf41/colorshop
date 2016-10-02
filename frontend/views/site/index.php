@@ -728,4 +728,4 @@ $this->title = 'My Yii Application';
     <script type="text/javascript">$(function(){$('#menu-home-helper').css({'min-height': $('#menu-list').outerHeight() - 20});});</script>
 </div>
 
-</body></html>
+

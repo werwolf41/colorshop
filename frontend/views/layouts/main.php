@@ -10,6 +10,12 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use common\widgets\Menu;
+use yii\web\Request;
+use Yii;
+
+$controller = Yii::$app->controller;
+$default_controller = Yii::$app->defaultRoute;
+$isHome = (($controller->id === $default_controller) && ($controller->action->id === $controller->defaultAction)) ? 'common-home' : '';
 
 AppAsset::register($this);
 ?>
@@ -26,7 +32,7 @@ AppAsset::register($this);
     <?php $this->head() ?>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body class="common-home"> <!--Класс меняется-->
+<body class="<?= $isHome?>"> <!--Класс меняется-->
 <?php $this->beginBody() ?>
 
 

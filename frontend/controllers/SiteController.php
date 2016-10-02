@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Category;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -12,6 +13,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\models\query\ProductQuery;
 
 /**
  * Site controller
@@ -74,6 +76,33 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
+
+    public function actionCategory($id){
+        $category = $this->findCategoryModel($id);
+        $daughters = Category::find()->select(['id', 'name'])->where(['parentId'=>$id, 'status'=>1])->all();
+
+        return $this->render('category',[
+            'category'=>$category,
+            'daughters' =>$daughters,
+        ]);
+    }
+
+
+    /**
+     * @param integer $id
+     * @return Category the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findCategoryModel($id)
+    {
+        if (($model = Category::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+
 
     /**
      * Logs in a user.
