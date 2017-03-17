@@ -36,7 +36,7 @@
                         'icon' => 'fa fa-share',
                         'url' => '#',
                         'items'=>[
-                            ['label'=>'Категории', 'icon' => 'fa fa-share','url' => '/admin/category']
+                            ['label'=>'Категории', 'icon' => 'fa fa-share','url' => \yii\helpers\Url::to('category')]
                         ]
                     ],
                     ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],

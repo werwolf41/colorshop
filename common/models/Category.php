@@ -46,7 +46,8 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['parentId', 'status', 'sort', 'created_at', 'update_at'], 'integer'],
-            [['name', 'description', 'image', 'metatitle', 'metaDescription', 'keywords', 'alias'], 'string', 'max' => 255],
+            [['name', 'image', 'metatitle', 'metaDescription', 'keywords', 'alias'], 'string', 'max' => 255],
+            [['description'], 'string'],
             [['parentId'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['parentId' => 'id']],
 
         ];

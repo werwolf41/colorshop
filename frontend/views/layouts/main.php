@@ -11,7 +11,7 @@ use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use common\widgets\Menu;
 use yii\web\Request;
-use Yii;
+
 
 $controller = Yii::$app->controller;
 $default_controller = Yii::$app->defaultRoute;
@@ -23,6 +23,7 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html  dir="ltr" lang="<?= Yii::$app->language ?>">
 <head>
+    <base href="<?php echo 	yii\helpers\BaseUrl::home(); ?>" />
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,6 +32,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body class="<?= $isHome?>"> <!--Класс меняется-->
 <?php $this->beginBody() ?>
@@ -88,7 +90,7 @@ AppAsset::register($this);
                         <span class="fa fa fa-angle-down caretalt"></span>
                     </button>
                     <ul class="dropdown-menu pull-right">
-                        <li><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=account/login"><i class="fa fa-sign-in fa-fw dropdown-menu-icon"></i>&nbsp;&nbsp;Авторизация</a></li>
+                        <li><?php echo Html::a('<i class="fa fa-sign-in fa-fw dropdown-menu-icon"></i>&nbsp;&nbsp;Авторизация', \yii\helpers\Url::to('site/login'))?></li>
                         <li><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=account/register"><i class="fa fa-pencil fa-fw dropdown-menu-icon"></i>&nbsp;&nbsp;Регистрация</a></li>
                     </ul>
                 </div>
