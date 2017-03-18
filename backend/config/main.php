@@ -16,7 +16,7 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
-            'baseUrl' => '',
+            'baseUrl' => '/admin',
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -65,7 +65,7 @@ return [
             'roots' => [
                 [
                     'baseUrl'=>'@web',
-                    'basePath'=>'@root',
+                    'basePath'=>'@webroot',
                     'path' => 'upload',
                     'name' => 'Global'
                 ],

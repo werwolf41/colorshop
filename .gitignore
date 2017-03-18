@@ -31,6 +31,3 @@ phpunit.phar
 
 # vagrant runtime
 /.vagrant
-
-# upoads
-/upload

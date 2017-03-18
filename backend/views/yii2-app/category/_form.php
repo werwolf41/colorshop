@@ -4,8 +4,6 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\Category;
 use yii\bootstrap\Tabs;
-use yii\helpers\Url;
-
 /* @var $this yii\web\View */
 /* @var $model common\models\Category */
 /* @var $form yii\widgets\ActiveForm */
@@ -21,7 +19,7 @@ use yii\helpers\Url;
                 <?= Html::submitButton($model->isNewRecord ? '<i class="fa fa-save"></i> Сохранить' : '<i class="fa fa-save"></i> Изменить', ['class'=>'btn btn-app']) ?>
             </div>
             <div class="pull-right">
-                <?= Html::a('Назад', URL::to('category'), ['class'=>'btn btn-danger'])?>
+                <?= Html::a('Назад', '/admin/category', ['class'=>'btn btn-danger'])?>
             </div>
         </div>
     </div>
@@ -60,7 +58,7 @@ use yii\helpers\Url;
                 <?= Html::submitButton($model->isNewRecord ? '<i class="fa fa-save"></i> Сохранить' : '<i class="fa fa-save"></i> Изменить', ['class'=>'btn btn-app']) ?>
             </div>
             <div class="pull-right">
-                <?= Html::a('Назад', URL::to('category'), ['class'=>'btn btn-danger'])?>
+                <?= Html::a('Назад', '/admin/category', ['class'=>'btn btn-danger'])?>
             </div>
         </div>
     </div>

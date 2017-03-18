@@ -34,7 +34,6 @@ if (Yii::$app->controller->action->id === 'login') {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
-        <base href="<?php echo 	yii\helpers\BaseUrl::home(); ?>" />
         <?php $this->head() ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">

@@ -920,15 +920,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="red-links">
                     <div class="pull-left">
                         <?= DisplayImage::widget([
-                            'width' => 113,
-                            //'height'=> 90,
+                            'width' => 80,
+                            'height'=> 80,
                             'options'=>[
                                 'class'=>"img-thumbnail",
                                 'style'=>"margin: 0 10px 5px 0;",
                             ],
                             'name'=>$category->name,
                             'image' => $category->image,
-                            'category' => 'items',
+                            'category' => 'all',
                             'cacheSeconds' => 'auto',
                         ]);
                         ?>

@@ -4,7 +4,6 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use common\models\Category;
 use dmstr\widgets\Alert;
-use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Category */
@@ -33,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]) ?>
             </div>
             <div class="pull-right">
-                <?= Html::a('Назад', URL::to('category'), ['class'=>'btn btn-danger'])?>
+                <?= Html::a('Назад', '/admin/category', ['class'=>'btn btn-danger'])?>
             </div>
         </div>
     </div>
@@ -78,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]) ?>
             </div>
             <div class="pull-right">
-                <?= Html::a('Назад', URL::to('category'), ['class'=>'btn btn-danger'])?>
+                <?= Html::a('Назад', '/admin/category', ['class'=>'btn btn-danger'])?>
             </div>
         </div>
     </div>
