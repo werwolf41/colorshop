@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use common\models\Category;
+use common\models\Manufacturers;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -85,6 +86,11 @@ class SiteController extends Controller
             'category'=>$category,
             'daughters' =>$daughters,
         ]);
+    }
+
+    public function actionManufacturers(){
+        $manufacturers = Manufacturers::find()->where('status=1')->orderBy('name')->all();
+        return $this->render('manufacturers', ['manufacturers'=>$manufacturers]);
     }
 
 
