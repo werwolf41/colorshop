@@ -6,14 +6,12 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 
-
 /**
- * This is the model class for table "{{%category}}".
+ * This is the model class for table "cs_manufacturers".
  *
  * @property integer $id
  * @property string $name
  * @property string $description
- * @property integer $parentId
  * @property string $image
  * @property integer $status
  * @property string $metatitle
@@ -24,19 +22,16 @@ use yii\db\ActiveRecord;
  * @property integer $created_at
  * @property integer $update_at
  *
- * @property Category $parent
- * @property Category[] $categories
+ * @property Product[] $products
  */
-class Category extends \yii\db\ActiveRecord
+class Manufacturers extends \yii\db\ActiveRecord
 {
-
-
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%category}}';
+        return 'cs_manufacturers';
     }
 
     /**
@@ -45,11 +40,9 @@ class Category extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['parentId', 'status', 'sort', 'created_at', 'update_at'], 'integer'],
             [['description'], 'string'],
+            [['status', 'sort', 'created_at', 'update_at'], 'integer'],
             [['name', 'image', 'metatitle', 'metaDescription', 'keywords', 'alias'], 'string', 'max' => 255],
-            [['parentId'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['parentId' => 'id']],
-
         ];
     }
 
@@ -60,19 +53,17 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Название',
+            'name' => 'Производитель',
             'description' => 'Описание',
-            'parent.name' => 'Родительская категория',
-            'parentId'=>'Родительская категория',
-            'image' => 'Фото',
-            'status' => 'Включена',
-            'metatitle' => 'Title',
-            'metaDescription' => 'MetaDescription',
+            'image' => 'Изображение',
+            'status' => 'Статус',
+            'metatitle' => 'Metatitle',
+            'metaDescription' => 'Meta Description',
             'keywords' => 'Keywords',
-            'alias' => 'Ссылка',
+            'alias' => 'Alias',
             'sort' => 'Порядок сортировки',
-            'created_at' => 'Создана',
-            'update_at' => "Изменена",
+            'created_at' => 'Created At',
+            'update_at' => 'Update At',
         ];
     }
 
@@ -95,16 +86,8 @@ class Category extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getParent()
+    public function getProducts()
     {
-        return $this->hasOne(Category::className(), ['id' => 'parentId']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCategories()
-    {
-        return $this->hasMany(Category::className(), ['parentId' => 'id']);
+        return $this->hasMany(Product::className(), ['manufacturer_id' => 'id']);
     }
 }

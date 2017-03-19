@@ -2,20 +2,18 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use common\models\Category;
-use dmstr\widgets\Alert;
 use yii\helpers\Url;
+use dmstr\widgets\Alert;
+
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Category */
+/* @var $model common\models\Manufacturers */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Категории', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Производители', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-
-<div class="category-view">
+<div class="manufacturers-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?= Alert::widget()?>
@@ -27,13 +25,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
                     'class' => 'btn btn-danger',
                     'data' => [
-                        'confirm' => 'Вы уверены, что хотите удалить эту категорию?',
+                        'confirm' => 'Вы уверены, что хотите удалить этого производителя?',
                         'method' => 'post',
                     ],
                 ]) ?>
             </div>
             <div class="pull-right">
-                <?= Html::a('Назад', Url::to('/admin/catalog/category'), ['class'=>'btn btn-danger'])?>
+                <?= Html::a('Назад', Url::to('/admin/catalog/manufacturers'), ['class'=>'btn btn-danger'])?>
             </div>
         </div>
     </div>
@@ -53,8 +51,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'name',
             'description:html',
-            'parent.name',
-            'status:boolean',
+            [
+                'attribute'=>'status',
+                'value'=>\backend\controllers\catalog\ManufacturersController::getStatusLabel($model),
+            ],
+            //'status:boolean',
             'metatitle',
             'metaDescription',
             'keywords',
@@ -64,23 +65,5 @@ $this->params['breadcrumbs'][] = $this->title;
             'update_at:dateTime',
         ],
     ]) ?>
-
-    <div class="box box-primary">
-        <div class="box-body pad table-responsive">
-            <div class="pull-left">
-                <?= Html::a('Обновиь', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-                <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
-                    'class' => 'btn btn-danger',
-                    'data' => [
-                        'confirm' => 'Вы уверены, что хотите удалить эту каьегорию?',
-                        'method' => 'post',
-                    ],
-                ]) ?>
-            </div>
-            <div class="pull-right">
-                <?= Html::a('Назад', Url::to('/admin/catalog/category'), ['class'=>'btn btn-danger'])?>
-            </div>
-        </div>
-    </div>
 
 </div>

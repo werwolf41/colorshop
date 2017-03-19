@@ -1,3 +1,6 @@
+<?php
+use yii\helpers\Url;
+?>
 <aside class="main-sidebar">
 
     <section class="sidebar">
@@ -36,7 +39,8 @@
                         'icon' => 'fa fa-share',
                         'url' => '#',
                         'items'=>[
-                            ['label'=>'Категории', 'icon' => 'fa fa-share','url' => '/admin/category']
+                            ['label'=>'Категории', 'icon' => 'fa fa-share','url' => Url::to('/admin/catalog/category')],
+                            ['label'=>'Производители', 'icon' => 'fa fa-share','url' => Url::to('/admin/catalog/manufacturers')]
                         ]
                     ],
                     ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],

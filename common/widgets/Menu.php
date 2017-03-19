@@ -25,6 +25,7 @@ class Menu extends \yii\bootstrap\Widget
             ->where(['status'=>1])
             ->orderBy(['parentId' => SORT_ASC])
             ->all();
+        $arr_cat =array();
         foreach ($cat as $category){
             if($category->parentId == null){
                 $category->parentId = 0;
@@ -38,6 +39,7 @@ class Menu extends \yii\bootstrap\Widget
             ];
         }
         $categories = array();
+
         for ($i=0; $i<count($arr_cat); $i++){
             $categories = $arr_cat[0];
             foreach ($categories as $cat){

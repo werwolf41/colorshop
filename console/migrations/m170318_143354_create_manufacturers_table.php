@@ -3,25 +3,24 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation for table `category`.
+ * Handles the creation for table `manufacturers`.
  */
-class m160914_064337_create_category_table extends Migration
+class m170318_143354_create_manufacturers_table extends Migration
 {
     /**
      * @inheritdoc
      */
     public function up()
     {
-        $tableOptions = null;
         if ($this->db->driverName === 'mysql') {
             // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
-        $this->createTable('{{%category}}', [
+
+        $this->createTable('{{%manufacturers}}', [
             'id' => $this->primaryKey(),
             'name' => $this->string(),
             'description' => $this->text(),
-            'parentId' => $this->integer(11),
             'image'=> $this->string(),
             'status' => $this->integer(1),
             'metatitle' => $this->string(),
@@ -33,8 +32,10 @@ class m160914_064337_create_category_table extends Migration
             'update_at' => $this->integer(),
         ], $tableOptions);
 
-        $this->createIndex('idx_category_parentId', '{{%category}}','parentId');
-        $this->addForeignKey('fk_category_parentId', '{{%category}}', 'parentId', '{{%category}}', 'id');
+        $this->createIndex('idx_manufacturers_name', '{{%manufacturers}}', 'name');
+
+        $this->addForeignKey('fk_product_manufacturer_id_manufacturers_id', '{{%product}}', 'manufacturer_id', '{{%manufacturers}}', 'id');
+
     }
 
     /**
@@ -42,6 +43,6 @@ class m160914_064337_create_category_table extends Migration
      */
     public function down()
     {
-        $this->dropTable('{{%category}}');
+        $this->dropTable('{{%manufacturers}}');
     }
 }

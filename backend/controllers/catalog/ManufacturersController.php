@@ -3,19 +3,16 @@
 namespace backend\controllers\catalog;
 
 use Yii;
-use common\models\Category;
-use backend\models\CategorySearch;
+use common\models\Manufacturers;
+use backend\models\ManufacturersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\Session;
-
-
 
 /**
- * CategoryController implements the CRUD actions for Category model.
+ * ManufacturersController implements the CRUD actions for Manufacturers model.
  */
-class CategoryController extends Controller
+class ManufacturersController extends Controller
 {
     /**
      * @inheritdoc
@@ -33,14 +30,13 @@ class CategoryController extends Controller
     }
 
     /**
-     * Lists all Category models.
+     * Lists all Manufacturers models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CategorySearch();
+        $searchModel = new ManufacturersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->pagination->pageSize=20;
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -49,26 +45,25 @@ class CategoryController extends Controller
     }
 
     /**
-     * Displays a single Category model.
+     * Displays a single Manufacturers model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
-        $model = $this->findModel($id);
         return $this->render('view', [
-            'model' => $model,
+            'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Category model.
+     * Creates a new Manufacturers model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Category();
+        $model = new Manufacturers();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -80,7 +75,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Updates an existing Category model.
+     * Updates an existing Manufacturers model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -99,37 +94,35 @@ class CategoryController extends Controller
     }
 
     /**
-     * Deletes an existing Category model.
+     * Deletes an existing Manufacturers model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
     public function actionDelete($id)
     {
-        $count = Category::find()->where(['parentId'=>$id])->count();
-        if($count == 0) {
-            $this->findModel($id)->delete();
+        $this->findModel($id)->delete();
 
-            return $this->redirect(['index']);
-        }else{
-            Yii::$app->session->setFlash('error','test');
-            return $this->redirect(['view', 'id'=>$id ]);
-        }
+        return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Category model based on its primary key value.
+     * Finds the Manufacturers model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Category the loaded model
+     * @return Manufacturers the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Category::findOne($id)) !== null) {
+        if (($model = Manufacturers::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function getStatusLabel($model){
+        return $model->status ? 'Включен' : 'Выключен';
     }
 }

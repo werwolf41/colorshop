@@ -16,14 +16,14 @@ Yii::$container->set('pavlinter\display\DisplayImage', [
             'imagesDir' => '@webroot',
             'defaultWebDir' => '@web/admin/upload/',
             'defaultDir' => '@webroot/admin/upload/',
-            'mode' => \pavlinter\display\DisplayImage::MODE_STATIC,
+            'mode' => \pavlinter\display\DisplayImage::MODE_MIN,
         ],
         'all' => [
             'imagesWebDir' => '@web',
             'imagesDir' => '@webroot',
             'defaultWebDir' => '@web/admin/upload/',
             'defaultDir' => '@webroot/admin/upload/',
-            'mode' => \pavlinter\display\DisplayImage::MODE_OUTBOUND,
+            'mode' => \pavlinter\display\DisplayImage::MODE_MIN,
         ],
         'users' => [
             'imagesWebDir' => '@web',

@@ -39,39 +39,6 @@ AppAsset::register($this);
 <header>
     <div id="top">
         <div class="container text-center text-right-md" >
-            <!--<div class="pull-left">
-                <div class="inline-block">
-                    <div class="pull-left">
-                        <form action="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=common/language/language" method="post" enctype="multipart/form-data" id="language">
-                            <div class="btn-group">
-                                <button class="btn dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe icon"></i><span class="hidden-xs hidden-sm">&nbsp;&nbsp;Russian&nbsp;</span>&nbsp;<span class="fa fa fa-angle-down caretalt"></span></button>
-
-                                <ul class="dropdown-menu">
-                                    <li><a href="en-gb">&nbsp;&nbsp;English</a></li>
-                                </ul>
-                            </div>
-                            <input type="hidden" name="code" value="" />
-                            <input type="hidden" name="redirect" value="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=common/home" />
-                        </form>
-                    </div>
-                </div>
-                <div class="inline-block">
-                    <form action="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=common/currency/currency" method="post" enctype="multipart/form-data" id="currency">
-                        <div class="btn-group">
-                            <button class="btn dropdown-toggle" data-toggle="dropdown">
-                                <strong>$ </strong><span class="hidden-xs hidden-sm">&nbsp;&nbsp;US Dollar&nbsp;</span>&nbsp;<span class="fa fa fa-angle-down caretalt"></span></button>
-
-                            <ul class="dropdown-menu">
-                                <li><a class="currency-select" href="EUR"><strong>€ </strong>&nbsp;&nbsp;Euro</a></li>
-                                <li><a class="currency-select" href="RUB"><strong>р.</strong>&nbsp;&nbsp;Рубль</a></li>
-                            </ul>
-                        </div>
-                        <input type="hidden" name="code" value="" />
-                        <input type="hidden" name="redirect" value="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=common/home" />
-                    </form>
-                </div>
-            </div>-->
             <div class="pull-left">
                 <div class="btn-group">
                     <a class="btn" href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=account/wishlist" id="wishlist-total"><i class="fa fa-heart icon"></i><span class="hidden-xs hidden-sm">&nbsp;&nbsp;Закладки&nbsp;</span>&nbsp;<span class="badge">0</span></a>

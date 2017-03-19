@@ -2,17 +2,15 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use common\models\Category;
-use yii\bootstrap\Tabs;
 use yii\helpers\Url;
+use yii\bootstrap\Tabs;
+
 /* @var $this yii\web\View */
-/* @var $model common\models\Category */
+/* @var $model common\models\Manufacturers */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="category-form">
-
-
+<div class="manufacturers-form">
     <?php $form = ActiveForm::begin(); ?>
     <div class="box box-primary">
         <div class="box-body pad table-responsive">
@@ -20,37 +18,41 @@ use yii\helpers\Url;
                 <?= Html::submitButton($model->isNewRecord ? '<i class="fa fa-save"></i> Сохранить' : '<i class="fa fa-save"></i> Изменить', ['class'=>'btn btn-app']) ?>
             </div>
             <div class="pull-right">
-                <?= Html::a('Назад', Url::to('/admin/catalog/category'), ['class'=>'btn btn-danger'])?>
+                <?= Html::a('Назад', Url::to('/admin/catalog/manufacturers'), ['class'=>'btn btn-danger'])?>
             </div>
         </div>
     </div>
 <div class="nav-tabs-custom">
-  <?= Tabs::widget([
-    'items' => [
-        [
-            'label' => 'Основные',
-            'content' => $this->render('form1', [
-                'model'=>$model,
-                'form'=>$form,
-            ]),
-            'active' => true
+
+
+    <?= Tabs::widget([
+        'items' => [
+            [
+                'label' => 'Основные',
+                'content' => $this->render('main', [
+                    'model'=>$model,
+                    'form'=>$form,
+                ]),
+                'active' => true
+            ],
+            [
+                'label' => 'SEO',
+                'content' => $this->render('form_SEO', [
+                    'model'=>$model,
+                    'form'=>$form,
+                ]),
+            ],
+
+
         ],
-        [
-            'label' => 'SEO',
-            'content' => $this->render('form_SEO', [
-                'model'=>$model,
-                'form'=>$form,
-            ]),
-        ],
+        'options'=>[
 
-
-    ],
-    'options'=>[
-
-    ]
+        ]
     ]);
 
-  ?>
+    ?>
+
+
 </div>
 
     <div class="box box-primary">
@@ -59,7 +61,7 @@ use yii\helpers\Url;
                 <?= Html::submitButton($model->isNewRecord ? '<i class="fa fa-save"></i> Сохранить' : '<i class="fa fa-save"></i> Изменить', ['class'=>'btn btn-app']) ?>
             </div>
             <div class="pull-right">
-                <?= Html::a('Назад', Url::to('/admin/catalog/category'), ['class'=>'btn btn-danger'])?>
+                <?= Html::a('Назад', Url::to('/admin/catalog/manufacturers'), ['class'=>'btn btn-danger'])?>
             </div>
         </div>
     </div>
