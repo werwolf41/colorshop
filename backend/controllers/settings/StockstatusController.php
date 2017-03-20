@@ -1,18 +1,18 @@
 <?php
 
-namespace backend\controllers\catalog;
+namespace backend\controllers\settings;
 
 use Yii;
-use common\models\Manufacturers;
-use backend\models\ManufacturersSearch;
+use common\models\StockStatus;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ManufacturersController implements the CRUD actions for Manufacturers model.
+ * StockStatusController implements the CRUD actions for StockStatus model.
  */
-class ManufacturersController extends Controller
+class StockstatusController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,22 +30,22 @@ class ManufacturersController extends Controller
     }
 
     /**
-     * Lists all Manufacturers models.
+     * Lists all StockStatus models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ManufacturersSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => StockStatus::find(),
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Manufacturers model.
+     * Displays a single StockStatus model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class ManufacturersController extends Controller
     }
 
     /**
-     * Creates a new Manufacturers model.
+     * Creates a new StockStatus model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Manufacturers();
+        $model = new StockStatus();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class ManufacturersController extends Controller
     }
 
     /**
-     * Updates an existing Manufacturers model.
+     * Updates an existing StockStatus model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +94,7 @@ class ManufacturersController extends Controller
     }
 
     /**
-     * Deletes an existing Manufacturers model.
+     * Deletes an existing StockStatus model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,22 +107,18 @@ class ManufacturersController extends Controller
     }
 
     /**
-     * Finds the Manufacturers model based on its primary key value.
+     * Finds the StockStatus model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Manufacturers the loaded model
+     * @return StockStatus the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Manufacturers::findOne($id)) !== null) {
+        if (($model = StockStatus::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
-    }
-
-    public function getStatusLabel($model){
-        return $model->status ? 'Включен' : 'Выключен';
     }
 }

@@ -40,7 +40,16 @@ use yii\helpers\Url;
                         'url' => '#',
                         'items'=>[
                             ['label'=>'Категории', 'icon' => 'fa fa-share','url' => Url::to('/admin/catalog/category')],
+                            ['label'=>'Товары', 'icon' => 'fa fa-share','url' => Url::to('/admin/catalog/product')],
                             ['label'=>'Производители', 'icon' => 'fa fa-share','url' => Url::to('/admin/catalog/manufacturers')]
+                        ]
+                    ],
+                    [
+                        'label'=>'Настройки',
+                        'icon' => 'fa fa-share',
+                        'url' => '#',
+                        'items'=>[
+                            ['label'=>'Статусы товаров', 'icon' => 'fa fa-share','url' => Url::to('/admin/settings/stockstatus')],
                         ]
                     ],
                     ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],
