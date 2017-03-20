@@ -88,10 +88,6 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionManufacturers(){
-        $manufacturers = Manufacturers::find()->where('status=1')->orderBy('name')->all();
-        return $this->render('manufacturers', ['manufacturers'=>$manufacturers]);
-    }
 
 
     /**

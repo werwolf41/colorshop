@@ -27,7 +27,7 @@ class m160914_064337_create_category_table extends Migration
             'metatitle' => $this->string(),
             'metaDescription' => $this->string(),
             'keywords'=>$this->string(),
-            'alias' => $this->string(255),
+            'alias' => $this->string(255)->unique()->notNull(),
             'sort' => $this->integer(11),
             'created_at' => $this->integer(),
             'update_at' => $this->integer(),

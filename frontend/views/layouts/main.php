@@ -4,9 +4,9 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use common\widgets\Menu;
@@ -261,42 +261,125 @@ AppAsset::register($this);
             <div class="row">
                 <div class="col-sm-6 col-md-3">
                     <h5><i class="fa fa-info-circle"></i><span>Информация</span></h5>
-                    <ul class="list-unstyled">
-                        <li><i class="fa fa-angle-right"></i><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=information/information&amp;information_id=4">О нас</a></li>
-                        <li><i class="fa fa-angle-right"></i><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=information/information&amp;information_id=6">Доставка</a></li>
-                        <li><i class="fa fa-angle-right"></i><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=information/information&amp;information_id=3">Политика Безопасности</a></li>
-                        <li><i class="fa fa-angle-right"></i><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=information/information&amp;information_id=5">Условия соглашения</a></li>
-                    </ul>
+
+                    <?= \dmstr\widgets\Menu::widget([
+                        'options'=>[
+                            'class'=>'list-unstyled',
+                        ],
+                        'items'=>[
+                            [
+                                'label' =>'О нас',
+                                'icon'  => 'fa fa-angle-right',
+                                'url'   =>'#'
+                            ],
+                            [
+                                'label' =>'Доставка',
+                                'icon'  => 'fa fa-angle-right',
+                                'url'   =>'#'
+                            ],
+                            [
+                                'label' =>'Политика Безопасности',
+                                'icon'  => 'fa fa-angle-right',
+                                'url'   =>'#'
+                            ],
+                            [
+                                'label' =>'Условия соглашения',
+                                'icon'  => 'fa fa-angle-right',
+                                'url'   =>'#'
+                            ],
+                        ]
+                    ])?>
+
                     <hr class="visible-xs">
                 </div>
                 <div class="col-sm-6 col-md-3">
                     <h5><i class="fa fa-support"></i><span>Служба поддержки</span></h5>
-                    <ul class="list-unstyled">
-                        <li><i class="fa fa-angle-right"></i><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=information/contact">Обратная связь</a></li>
-                        <li><i class="fa fa-angle-right"></i><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=account/return/add">Возврат товара</a></li>
-                        <li><i class="fa fa-angle-right"></i><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=information/sitemap">Карта сайта</a></li>
-                    </ul>
+                    <?= \dmstr\widgets\Menu::widget([
+                        'options'=>[
+                            'class'=>'list-unstyled',
+                        ],
+                        'items'=>[
+                            [
+                                'label' =>'Обратная связь',
+                                'icon'  => 'fa fa-angle-right',
+                                'url'   =>'#'
+                            ],
+                            [
+                                'label' =>'Возврат товара',
+                                'icon'  => 'fa fa-angle-right',
+                                'url'   =>'#'
+                            ],
+                            [
+                                'label' =>'Карта сайта',
+                                'icon'  => 'fa fa-angle-right',
+                                'url'   =>'#'
+                            ],
+                        ]
+                    ])?>
                     <hr class="visible-xs">
                 </div>
                 <div class="clearfix visible-sm">&nbsp;</div>
                 <div class="col-sm-6 col-md-3">
                     <h5><i class="glyphicon glyphicon-pushpin"></i><span>Дополнительно</span></h5>
-                    <ul class="list-unstyled">
-                        <li><i class="fa fa-angle-right"></i><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=product/manufacturer">Производители</a></li>
-                        <li><i class="fa fa-angle-right"></i><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=account/voucher">Подарочные сертификаты</a></li>
-                        <li><i class="fa fa-angle-right"></i><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=affiliate/account">Партнерская программа</a></li>
-                        <li><i class="fa fa-angle-right"></i><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=product/special">Акции</a></li>
-                    </ul>
+                    <?= \dmstr\widgets\Menu::widget([
+                        'options'=>[
+                            'class'=>'list-unstyled',
+                        ],
+                        'items'=>[
+                            [
+                                'label' =>'Производители',
+                                'icon'  => 'fa fa-angle-right',
+                                'url'   =>Url::to('/manufacturers')
+                            ],
+                            [
+                                'label' =>'Подарочные сертификаты',
+                                'icon'  => 'fa fa-angle-right',
+                                'url'   =>'#'
+                            ],
+                            [
+                                'label' =>'Партнерская программа',
+                                'icon'  => 'fa fa-angle-right',
+                                'url'   =>'#'
+                            ],
+                            [
+                                'label' =>'Акции',
+                                'icon'  => 'fa fa-angle-right',
+                                'url'   =>'#'
+                            ],
+                        ]
+                    ])?>
+
                     <hr class="visible-xs">
                 </div>
                 <div class="col-sm-6 col-md-3">
                     <h5><i class="glyphicon glyphicon-user"></i><span>Личный Кабинет</span></h5>
-                    <ul class="list-unstyled">
-                        <li><i class="fa fa-angle-right"></i><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=account/account">Личный Кабинет</a></li>
-                        <li><i class="fa fa-angle-right"></i><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=account/order">История заказов</a></li>
-                        <li><i class="fa fa-angle-right"></i><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=account/wishlist">Закладки</a></li>
-                        <li><i class="fa fa-angle-right"></i><a href="http://coloring.xds.by/demo/oc_2.3.x/index.php?route=account/newsletter">Рассылка</a></li>
-                    </ul>
+                    <?= \dmstr\widgets\Menu::widget([
+                        'options'=>[
+                            'class'=>'list-unstyled',
+                        ],
+                        'items'=>[
+                            [
+                                'label' =>'Личный Кабинет',
+                                'icon'  => 'fa fa-angle-right',
+                                'url'   =>'#'
+                            ],
+                            [
+                                'label' =>'История заказов',
+                                'icon'  => 'fa fa-angle-right',
+                                'url'   =>'#'
+                            ],
+                            [
+                                'label' =>'Закладки',
+                                'icon'  => 'fa fa-angle-right',
+                                'url'   =>'#'
+                            ],
+                            [
+                                'label' =>'Рассылка',
+                                'icon'  => 'fa fa-angle-right',
+                                'url'   =>'#'
+                            ],
+                        ]
+                    ])?>
                 </div>
             </div>
             <hr>

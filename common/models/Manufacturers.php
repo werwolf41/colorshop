@@ -43,6 +43,7 @@ class Manufacturers extends \yii\db\ActiveRecord
             [['description'], 'string'],
             [['status', 'sort', 'created_at', 'update_at'], 'integer'],
             [['name', 'image', 'metatitle', 'metaDescription', 'keywords', 'alias'], 'string', 'max' => 255],
+            [['alias'], 'unique'],
         ];
     }
 

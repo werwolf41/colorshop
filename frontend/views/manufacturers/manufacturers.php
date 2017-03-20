@@ -10,7 +10,6 @@
 use yii\bootstrap\Html;
 use yii\widgets\Breadcrumbs;
 use yii\helpers\Url;
-use pavlinter\display\DisplayHelper;
 use pavlinter\display\DisplayImage;
 
 
@@ -57,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'category' => 'all',
                                     'cacheSeconds' => 'auto',
                                 ]),
-                                    Url::to(['/site/manufacturer', 'id'=>$manufacturer->id])
+                                    Url::to(['/manufacturers/manufacturer', 'alias'=>$manufacturer->alias])
                                 )?>
                             </div>
 
