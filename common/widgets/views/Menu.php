@@ -25,7 +25,7 @@ use yii\helpers\Url;
 
                     <?=$category1['label']?>
 
-                    <span class="mobilink hidden-lg hidden-md" onclick="location.href='<?=Url::to(['site/category', 'id'=>$category1['id']])?>'" ></span>
+                    <span class="mobilink hidden-lg hidden-md" onclick="location.href='<?=Url::to(['/category', 'alias'=>$category1['alias']])?>'" ></span>
                 </a>
                 <?php if(isset($category1['items'])){?>
                 <div class="child-box box-col-1">
@@ -38,14 +38,14 @@ use yii\helpers\Url;
 											<i class="fa fa-plus plus"></i>
 											<i class="fa fa-minus minus"></i>
 										</span>
-                                    <a href="<?= Url::to(['site/category','id'=>$category2['id']])?>" class="with-child2">
+                                    <a href="<?= Url::to(['/category','alias'=>$category2['alias']])?>" class="with-child2">
 
 
                                         <span class="livel-down hidden-md hidden-lg">&#8627;</span><?=$category2['label']?></a></div>
                                 <?php if(isset($category2['items'])){?>
                                     <?php foreach ($category2['items'] as $category3){?>
                                         <ul class="child2-box">
-                                            <li><a href="<?= Url::to(['site/category','id'=>$category3['id']])?>"><span class="livel-down">&#8627;</span><?=$category3['label']?></a></li>
+                                            <li><a href="<?= Url::to(['/category','alias'=>$category3['alias']])?>"><span class="livel-down">&#8627;</span><?=$category3['label']?></a></li>
 
                                         </ul>
                                     <?php }
@@ -55,7 +55,7 @@ use yii\helpers\Url;
                         <?php } ?>
                     </div>
                     <div class="see-all-categories hidden-xs hidden-sm">
-                        <a href="<?=Url::to(['site/category', 'id'=>$category1['id']])?>">Смотреть Все&nbsp;<?=$category1['label']?></a>
+                        <a href="<?=Url::to(['/category', 'alias'=>$category1['alias']])?>">Смотреть Все&nbsp;<?=$category1['label']?></a>
                     </div>
                 </div>
                 <?php } ?>

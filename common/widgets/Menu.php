@@ -21,7 +21,7 @@ class Menu extends \yii\bootstrap\Widget
 
     public function run(){
         $cat = Category::find()
-            ->select(['id','name', 'parentId'])
+            ->select(['id','name', 'parentId', 'alias'])
             ->where(['status'=>1])
             ->orderBy(['parentId' => SORT_ASC])
             ->all();
@@ -36,6 +36,7 @@ class Menu extends \yii\bootstrap\Widget
             $arr_cat[$category->parentId][$category->id] = [
                 'id' => $category->id,
                 'label'=> $category->name,
+                'alias'=>$category->alias
             ];
         }
         $categories = array();

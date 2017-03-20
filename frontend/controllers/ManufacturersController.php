@@ -12,7 +12,7 @@ class ManufacturersController extends Controller
     }
 
     public function actionManufacturer($alias){
-        $model = Manufacturers::find()->where('alias = "'.$alias.'"')->one();
+        $model = Manufacturers::find()->where(['alias'=>$alias, 'status'=>1])->one();
         return $this->render('manufacturer', ['model'=>$model]);
     }
 }
