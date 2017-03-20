@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'category' => 'all',
                                     'cacheSeconds' => 'auto',
                                 ]),
-                                    Url::to(['/manufacturer', 'id'=>$manufacturer->id])
+                                    Url::to(['/site/manufacturer', 'id'=>$manufacturer->id])
                                 )?>
                             </div>
 
