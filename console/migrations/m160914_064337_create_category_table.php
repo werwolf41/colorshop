@@ -34,7 +34,7 @@ class m160914_064337_create_category_table extends Migration
         ], $tableOptions);
 
         $this->createIndex('idx_category_parentId', '{{%category}}','parentId');
-        $this->addForeignKey('fk_category_parentId', '{{%category}}', 'parentId', '{{%category}}', 'id');
+        $this->addForeignKey('fk_category_parentId', '{{%category}}', 'parentId', '{{%category}}', 'id', 'SET NULL');
     }
 
     /**

@@ -26,8 +26,8 @@ class m170316_144554_create_categories_product_table extends Migration
         $this->createIndex('idx_categories_product_product_id', '{{%categories_product}}', 'product_id');
         $this->createIndex('idx_categories_product_category_id', '{{%categories_product}}', 'category_id');
 
-        $this->addForeignKey('fk_categories_product_product_id_product_id', '{{%categories_product}}', 'product_id', '{{%product}}', 'id');
-        $this->addForeignKey('fk_categories_product_category_id_category_id', '{{%categories_product}}', 'category_id', '{{%category}}', 'id');
+        $this->addForeignKey('fk_categories_product_product_id_product_id', '{{%categories_product}}', 'product_id', '{{%product}}', 'id', 'CASCADE');
+        $this->addForeignKey('fk_categories_product_category_id_category_id', '{{%categories_product}}', 'category_id', '{{%category}}', 'id', 'CASCADE');
     }
 
     /**
@@ -35,7 +35,7 @@ class m170316_144554_create_categories_product_table extends Migration
      */
     public function down()
     {
-        $this->dropForeignKey('fk_categories_product_category_id_category_id', '{{%category_product}}');
+        $this->dropForeignKey('fk_categories_product_category_id_category_id', '{{%categories_product}}');
         $this->dropForeignKey('fk_categories_product_product_id_product_id', '{{%categories_product}}');
 
         $this->dropIndex('idx_categories_product_category_id', '{{%categories_product}}');

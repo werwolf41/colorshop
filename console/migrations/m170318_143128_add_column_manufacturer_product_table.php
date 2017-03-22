@@ -15,15 +15,4 @@ class m170318_143128_add_column_manufacturer_product_table extends Migration
         $this->dropColumn('{{%product}}', 'manufacturer_id');
 
     }
-
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
-    {
-    }
-
-    public function safeDown()
-    {
-    }
-    */
 }

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\ProductSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Products';
+$this->title = 'Товары';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="product-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Новый товар', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,16 +24,33 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
+            [
+                'attribute'=>'image',
+                'filter'=> '',
+                'value'=>function($model) {
+                    return  Html::img( $model->image, ['width' => 100, 'alt' => $model->name, 'class'=>'img-responsive']);
+                },
+                'format'=>'raw',
+            ],
             'name',
-            'description:ntext',
+            //'description:html',
             'model',
-            'article',
-            // 'price',
-            // 'status',
+            //'article',
+            'price',
+            [
+                'attribute'=>'status',
+                'filter'=>[
+                    '1'=>'Включена',
+                    '0'=>'Отключена',
+                ],
+                'value'=>function($model){
+                    if($model->status == 1) return "Включена";
+                    else return "Отключена";
+                },
+            ],
             // 'stock_status_id',
-            // 'quantity',
-            // 'image',
+            'quantity',
             // 'length',
             // 'width',
             // 'height',
@@ -45,7 +62,13 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'sort',
             // 'created_at',
             // 'update_at',
-            // 'manufacturer_id',
+            [
+                'attribute' =>     'manufacturer',
+                'value' => function ($model){
+                    return $model->manufacturer->name;
+                },
+            ],
+
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

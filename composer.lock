@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "44137f0a4688dc0bd6ed5c27e6c8b1d0",
-    "content-hash": "3ec31ee94a1ec162c03da354ae3eb9a0",
+    "content-hash": "97359c00915f4d618fd84662a50a9258",
     "packages": [
         {
             "name": "2amigos/yii2-tinymce-widget",
@@ -65,7 +64,7 @@
                 "yii 2",
                 "yii2"
             ],
-            "time": "2015-03-28 21:53:43"
+            "time": "2015-03-28T21:53:43+00:00"
         },
         {
             "name": "almasaeed2010/adminlte",
@@ -105,7 +104,7 @@
                 "theme",
                 "web"
             ],
-            "time": "2016-08-04 23:22:06"
+            "time": "2016-08-04T23:22:06+00:00"
         },
         {
             "name": "bower-asset/bootstrap",
@@ -154,6 +153,81 @@
                 "mobile-first",
                 "responsive",
                 "web"
+            ]
+        },
+        {
+            "name": "bower-asset/chosen",
+            "version": "v1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/harvesthq/chosen-package.git",
+                "reference": "d7eba35cf214d2416fabee25c5d4619542a23d8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/harvesthq/chosen-package/zipball/d7eba35cf214d2416fabee25c5d4619542a23d8d",
+                "reference": "d7eba35cf214d2416fabee25c5d4619542a23d8d",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.4.4"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "chosen.jquery.min.js",
+                    "chosen.css",
+                    "chosen-sprite@2x.png",
+                    "chosen-sprite.png"
+                ],
+                "bower-asset-ignore": []
+            },
+            "license": [
+                {
+                    "type": "MIT",
+                    "url": "https://github.com/harvesthq/chosen/blob/master/LICENSE.md"
+                }
+            ],
+            "description": "Chosen is a JavaScript plugin that makes long, unwieldy select boxes much more user-friendly. It is currently available in both jQuery and Prototype flavors.",
+            "keywords": [
+                "dropdown",
+                "form",
+                "input",
+                "multiselect",
+                "select",
+                "ui"
+            ]
+        },
+        {
+            "name": "bower-asset/chosen-bootstrap",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dbtek/chosen-bootstrap.git",
+                "reference": "12dcd363d1482c54c740ed9fe0e92549d81e9176"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dbtek/chosen-bootstrap/zipball/12dcd363d1482c54c740ed9fe0e92549d81e9176",
+                "reference": "12dcd363d1482c54c740ed9fe0e92549d81e9176",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/bootstrap": ">=3.0.0",
+                "bower-asset/chosen": "~1.4.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "chosen.bootstrap.css"
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Bootstrap look & feel for chosen",
+            "keywords": [
+                "bootstrap",
+                "chosen",
+                "theme"
             ]
         },
         {
@@ -378,7 +452,7 @@
                 "markdown",
                 "markdown-extra"
             ],
-            "time": "2015-03-06 05:28:07"
+            "time": "2015-03-06T05:28:07+00:00"
         },
         {
             "name": "cebe/yii2-gravatar",
@@ -421,7 +495,7 @@
                 "gravatar",
                 "yii"
             ],
-            "time": "2013-12-10 17:49:58"
+            "time": "2013-12-10T17:49:58+00:00"
         },
         {
             "name": "dmstr/yii2-adminlte-asset",
@@ -481,7 +555,7 @@
                 "theme",
                 "yii2"
             ],
-            "time": "2016-07-28 03:57:05"
+            "time": "2016-07-28T03:57:05+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -525,7 +599,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2016-07-16 12:58:58"
+            "time": "2016-07-16T12:58:58+00:00"
         },
         {
             "name": "imagine/imagine",
@@ -577,7 +651,7 @@
                 "image manipulation",
                 "image processing"
             ],
-            "time": "2013-07-10 17:25:36"
+            "time": "2013-07-10T17:25:36+00:00"
         },
         {
             "name": "mihaildev/yii2-ckeditor",
@@ -628,7 +702,7 @@
                 "wysiwyg",
                 "yii"
             ],
-            "time": "2014-11-19 22:04:08"
+            "time": "2014-11-19T22:04:08+00:00"
         },
         {
             "name": "mihaildev/yii2-elfinder",
@@ -679,7 +753,54 @@
                 "filemanager",
                 "yii"
             ],
-            "time": "2016-06-30 12:03:17"
+            "time": "2016-06-30T12:03:17+00:00"
+        },
+        {
+            "name": "nex/yii2-chosen",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RomeroMsk/yii2-chosen.git",
+                "reference": "0ba2b13421130b77cc0ab12a4b0b9cc71bbfd560"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RomeroMsk/yii2-chosen/zipball/0ba2b13421130b77cc0ab12a4b0b9cc71bbfd560",
+                "reference": "0ba2b13421130b77cc0ab12a4b0b9cc71bbfd560",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/chosen-bootstrap": "1.1.*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "nex\\chosen\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Ovchinnikov",
+                    "email": "nex.software@gmail.com",
+                    "homepage": "https://github.com/RomeroMsk"
+                }
+            ],
+            "description": "Bootstrap Chosen widget for Yii2",
+            "homepage": "https://github.com/RomeroMsk/yii2-chosen",
+            "keywords": [
+                "bootstrap",
+                "bootstrap 3",
+                "chosen",
+                "extension",
+                "widget",
+                "yii2"
+            ],
+            "time": "2016-06-07T15:49:37+00:00"
         },
         {
             "name": "pavlinter/yii2-display-image",
@@ -775,7 +896,7 @@
                 "font",
                 "yii"
             ],
-            "time": "2016-08-31 12:41:25"
+            "time": "2016-08-31T12:41:25+00:00"
         },
         {
             "name": "studio-42/elfinder",
@@ -833,7 +954,7 @@
             ],
             "description": "File manager for web",
             "homepage": "http://elfinder.org",
-            "time": "2016-09-12 01:53:22"
+            "time": "2016-09-12T01:53:22+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -886,7 +1007,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-07-08 11:51:25"
+            "time": "2016-07-08T11:51:25+00:00"
         },
         {
             "name": "tinymce/tinymce",
@@ -932,7 +1053,7 @@
                 "tinymce",
                 "wysiwyg"
             ],
-            "time": "2016-09-01 11:11:25"
+            "time": "2016-09-01T11:11:25+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -1026,7 +1147,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2016-07-11 13:36:42"
+            "time": "2016-07-11T13:36:42+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -1076,7 +1197,7 @@
                 "bootstrap",
                 "yii2"
             ],
-            "time": "2016-03-17 03:29:28"
+            "time": "2016-03-17T03:29:28+00:00"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -1123,7 +1244,7 @@
                 "extension installer",
                 "yii2"
             ],
-            "time": "2016-02-06 00:49:24"
+            "time": "2016-02-06T00:49:24+00:00"
         },
         {
             "name": "yiisoft/yii2-imagine",
@@ -1171,7 +1292,7 @@
                 "imagine",
                 "yii2"
             ],
-            "time": "2016-09-04 15:14:08"
+            "time": "2016-09-04T15:14:08+00:00"
         },
         {
             "name": "yiisoft/yii2-jui",
@@ -1221,7 +1342,7 @@
                 "jQuery UI",
                 "yii2"
             ],
-            "time": "2016-07-22 22:26:59"
+            "time": "2016-07-22T22:26:59+00:00"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
@@ -1271,7 +1392,7 @@
                 "swiftmailer",
                 "yii2"
             ],
-            "time": "2016-09-09 11:48:11"
+            "time": "2016-09-09T11:48:11+00:00"
         }
     ],
     "packages-dev": [
@@ -1348,7 +1469,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2016-04-29 12:21:54"
+            "time": "2016-04-29T12:21:54+00:00"
         },
         {
             "name": "phpspec/php-diff",
@@ -1386,7 +1507,7 @@
                 }
             ],
             "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
-            "time": "2016-04-07 12:29:16"
+            "time": "2016-04-07T12:29:16+00:00"
         },
         {
             "name": "yiisoft/yii2-codeception",
@@ -1431,7 +1552,8 @@
                 "codeception",
                 "yii2"
             ],
-            "time": "2016-03-17 03:41:26"
+            "abandoned": "codeception/codeception",
+            "time": "2016-03-17T03:41:26+00:00"
         },
         {
             "name": "yiisoft/yii2-debug",
@@ -1478,7 +1600,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2016-03-17 03:50:19"
+            "time": "2016-03-17T03:50:19+00:00"
         },
         {
             "name": "yiisoft/yii2-faker",
@@ -1525,7 +1647,7 @@
                 "faker",
                 "yii2"
             ],
-            "time": "2015-03-01 06:22:44"
+            "time": "2015-03-01T06:22:44+00:00"
         },
         {
             "name": "yiisoft/yii2-gii",
@@ -1578,7 +1700,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2016-03-18 14:09:46"
+            "time": "2016-03-18T14:09:46+00:00"
         }
     ],
     "aliases": [],

@@ -22,7 +22,7 @@ class m170317_193942_create_stock_status_table extends Migration
             'name'=>$this->string()->notNull(),
         ],$tableOptions);
 
-        $this->addForeignKey('fk_product_stock_status_id_stock_status_id', '{{%product}}', 'stock_status_id', '{{%stock_status}}', 'id');
+        $this->addForeignKey('fk_product_stock_status_id_stock_status_id', '{{%product}}', 'stock_status_id', '{{%stock_status}}', 'id', 'SET NULL');
     }
 
     /**
@@ -30,7 +30,7 @@ class m170317_193942_create_stock_status_table extends Migration
      */
     public function down()
     {
-        $this->dropForeignKey('fk_product_stock_status_id_stock_status_id', '{{%product]]');
+        $this->dropForeignKey('fk_product_stock_status_id_stock_status_id', '{{%product}}');
         $this->dropTable('{{%stock_status}}');
     }
 }

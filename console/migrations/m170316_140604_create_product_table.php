@@ -27,7 +27,7 @@ class m170316_140604_create_product_table extends Migration
             'price'=>$this->decimal(20,5)->notNull()->defaultValue(0.00000),
             'status' => $this->integer(1),
             'stock_status_id'=> $this->integer(1),
-            'quantity'=>$this->integer(20),
+            'quantity'=>$this->integer(20)->notNull(),
             'image'=> $this->string(),
             'length'=>$this->decimal(20,5)->defaultValue(0.00000),
             'width'=>$this->decimal(20,5)->defaultValue(0.00000),

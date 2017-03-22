@@ -34,7 +34,7 @@ class m170318_143354_create_manufacturers_table extends Migration
 
         $this->createIndex('idx_manufacturers_name', '{{%manufacturers}}', 'name');
 
-        $this->addForeignKey('fk_product_manufacturer_id_manufacturers_id', '{{%product}}', 'manufacturer_id', '{{%manufacturers}}', 'id');
+        $this->addForeignKey('fk_product_manuf_id_manuf_id', '{{%product}}', 'manufacturer_id', '{{%manufacturers}}', 'id', 'SET NULL');
 
     }
 
@@ -43,6 +43,10 @@ class m170318_143354_create_manufacturers_table extends Migration
      */
     public function down()
     {
+        $this->dropForeignKey('fk_product_manufacturer_id_manufacturers_id', '{{%product}}');
+
+        $this->dropIndex('idx_manufacturers_name', '{{%manufacturers}}');
+
         $this->dropTable('{{%manufacturers}}');
     }
 }

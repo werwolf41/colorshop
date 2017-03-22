@@ -44,7 +44,7 @@ class CategoriesProduct extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'product_id' => 'Product ID',
-            'category_id' => 'Category ID',
+            'category_id' => 'Категории',
         ];
     }
 

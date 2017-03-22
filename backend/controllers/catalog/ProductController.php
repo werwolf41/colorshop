@@ -2,12 +2,15 @@
 
 namespace backend\controllers\catalog;
 
+use common\models\CategoriesProduct;
 use Yii;
 use common\models\Product;
 use backend\models\ProductSearch;
+use yii\base\Model;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -51,8 +54,9 @@ class ProductController extends Controller
      */
     public function actionView($id)
     {
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($id)
         ]);
     }
 
@@ -64,9 +68,12 @@ class ProductController extends Controller
     public function actionCreate()
     {
         $model = new Product();
+        $categoriesProduct = new CategoriesProduct();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save() ) {
+
             return $this->redirect(['view', 'id' => $model->id]);
+
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -82,13 +89,21 @@ class ProductController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $model = Product::find()->where($id)->one();
+
+        if (!$model) {
+            throw new NotFoundHttpException("The product was not found.");
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+
+
+                return $this->redirect(['view', 'id' => $model->id]);
+
         } else {
             return $this->render('update', [
                 'model' => $model,
+
             ]);
         }
     }

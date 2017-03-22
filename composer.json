@@ -22,7 +22,8 @@
         "2amigos/yii2-tinymce-widget": "~1.1",
         "mihaildev/yii2-ckeditor": "*",
         "mihaildev/yii2-elfinder": "*",
-        "pavlinter/yii2-display-image": "dev-master"
+        "pavlinter/yii2-display-image": "dev-master",
+        "nex/yii2-chosen": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

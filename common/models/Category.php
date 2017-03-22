@@ -50,6 +50,7 @@ class Category extends \yii\db\ActiveRecord
             [['name', 'image', 'metatitle', 'metaDescription', 'keywords', 'alias'], 'string', 'max' => 255],
             [['parentId'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['parentId' => 'id']],
             [['alias'], 'unique'],
+            [['name', 'alias'], 'required']
         ];
     }
 

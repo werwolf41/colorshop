@@ -3,6 +3,8 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "cs_product".
@@ -36,6 +38,8 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
+
+
     /**
      * @inheritdoc
      */
@@ -50,7 +54,7 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'model'], 'required'],
+            [['name', 'model', 'price', 'quantity', 'manufacturer_id'], 'required'],
             [['description', 'meta_desc', 'meta_keywords'], 'string'],
             [['price', 'length', 'width', 'height', 'weight'], 'number'],
             [['status', 'stock_status_id', 'quantity', 'sort', 'created_at', 'update_at', 'manufacturer_id'], 'integer'],
@@ -59,6 +63,8 @@ class Product extends \yii\db\ActiveRecord
             [['alias'], 'unique'],
             [['manufacturer_id'], 'exist', 'skipOnError' => true, 'targetClass' => Manufacturers::className(), 'targetAttribute' => ['manufacturer_id' => 'id']],
             [['stock_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => StockStatus::className(), 'targetAttribute' => ['stock_status_id' => 'id']],
+            //['categoriesProducts', 'array'],
+
         ];
     }
 
@@ -69,27 +75,47 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'model' => 'Model',
-            'article' => 'Article',
-            'price' => 'Price',
-            'status' => 'Status',
-            'stock_status_id' => 'Stock Status ID',
-            'quantity' => 'Quantity',
-            'image' => 'Image',
-            'length' => 'Length',
-            'width' => 'Width',
-            'height' => 'Height',
-            'weight' => 'Weight',
+            'name' => 'Название',
+            'description' => 'Описание',
+            'model' => 'Модель',
+            'article' => 'Артикул',
+            'price' => 'Цена',
+            'status' => 'Статус',
+            'stock_status_id' => 'Статус при отсутствии на складе',
+            'quantity' => 'Количество',
+            'image' => 'Фото',
+            'length' => 'Длина',
+            'width' => 'Ширина',
+            'weight' => 'Вес',
+            'height' => 'Высота',
             'title' => 'Title',
             'meta_desc' => 'Meta Desc',
             'meta_keywords' => 'Meta Keywords',
             'alias' => 'Alias',
-            'sort' => 'Sort',
-            'created_at' => 'Created At',
-            'update_at' => 'Update At',
-            'manufacturer_id' => 'Manufacturer ID',
+            'sort' => 'Порядок сортировки',
+            'created_at' => 'Создан',
+            'update_at' => 'Изменен',
+            'manufacturer_id' => 'Производитель',
+            'categoriesProducts' => 'Категории',
+            'manufacturer' => 'Производитель'
+
+
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => 'created_at',
+                    ActiveRecord::EVENT_BEFORE_UPDATE => 'update_at',
+                ],
+                'value' => function() {
+                    return date('U'); // unix timestamp
+                },
+            ],
         ];
     }
 
@@ -116,4 +142,5 @@ class Product extends \yii\db\ActiveRecord
     {
         return $this->hasOne(StockStatus::className(), ['id' => 'stock_status_id']);
     }
+
 }

@@ -22,38 +22,38 @@ use yii\bootstrap\Tabs;
             </div>
         </div>
     </div>
-<div class="nav-tabs-custom">
+    <div class="nav-tabs-custom">
 
 
-    <?= Tabs::widget([
-        'items' => [
-            [
-                'label' => 'Основные',
-                'content' => $this->render('main', [
-                    'model'=>$model,
-                    'form'=>$form,
-                ]),
-                'active' => true
+        <?= Tabs::widget([
+            'items' => [
+                [
+                    'label' => 'Основные',
+                    'content' => $this->render('main', [
+                        'model'=>$model,
+                        'form'=>$form,
+                    ]),
+                    'active' => true
+                ],
+                [
+                    'label' => 'SEO',
+                    'content' => $this->render('form_SEO', [
+                        'model'=>$model,
+                        'form'=>$form,
+                    ]),
+                ],
+
+
             ],
-            [
-                'label' => 'SEO',
-                'content' => $this->render('form_SEO', [
-                    'model'=>$model,
-                    'form'=>$form,
-                ]),
-            ],
+            'options'=>[
+
+            ]
+        ]);
+
+        ?>
 
 
-        ],
-        'options'=>[
-
-        ]
-    ]);
-
-    ?>
-
-
-</div>
+    </div>
 
     <div class="box box-primary">
         <div class="box-body pad table-responsive">
