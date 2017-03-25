@@ -6,6 +6,7 @@ use dmstr\widgets\Alert;
 use yii\helpers\Url;
 use yii\grid\GridView;
 use yii\data\ActiveDataProvider;
+use backend\controllers\catalog\ManufacturersController;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Product */
@@ -47,8 +48,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'model',
             'article',
             'price',
-            'status',
-            'stock_status_id',
+            [
+                'attribute'=>'status',
+                'value'=>ManufacturersController::getStatusLabel($model),
+            ],
+            [
+                'attribute'=>'stock_status_id',
+                'value'=> $model->stockStatus->name
+            ],
             'quantity',
             'image',
             'length',

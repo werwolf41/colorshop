@@ -35,7 +35,13 @@ use yii\bootstrap\Tabs;
                     ]),
                     'active' => true
                 ],
-
+                [
+                    'label' => 'Прочее',
+                    'content' => $this->render('_data', [
+                        'model'=>$model,
+                        'form'=>$form,
+                    ]),
+                ],
                 [
                     'label' => 'SEO',
                     'content' => $this->render('_form_SEO', [

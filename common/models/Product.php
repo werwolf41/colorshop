@@ -2,9 +2,11 @@
 
 namespace common\models;
 
-use Yii;
+
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
+
 
 /**
  * This is the model class for table "cs_product".
@@ -39,7 +41,7 @@ use yii\db\ActiveRecord;
 class Product extends \yii\db\ActiveRecord
 {
 
-
+    public $category;
     /**
      * @inheritdoc
      */
@@ -54,7 +56,7 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'model', 'price', 'quantity', 'manufacturer_id'], 'required'],
+            [['name', 'model', 'price', 'quantity', 'manufacturer_id', 'category'], 'required'],
             [['description', 'meta_desc', 'meta_keywords'], 'string'],
             [['price', 'length', 'width', 'height', 'weight'], 'number'],
             [['status', 'stock_status_id', 'quantity', 'sort', 'created_at', 'update_at', 'manufacturer_id'], 'integer'],
@@ -63,7 +65,7 @@ class Product extends \yii\db\ActiveRecord
             [['alias'], 'unique'],
             [['manufacturer_id'], 'exist', 'skipOnError' => true, 'targetClass' => Manufacturers::className(), 'targetAttribute' => ['manufacturer_id' => 'id']],
             [['stock_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => StockStatus::className(), 'targetAttribute' => ['stock_status_id' => 'id']],
-            //['categoriesProducts', 'array'],
+            ['category', 'safe'],
 
         ];
     }
@@ -97,8 +99,8 @@ class Product extends \yii\db\ActiveRecord
             'update_at' => 'Изменен',
             'manufacturer_id' => 'Производитель',
             'categoriesProducts' => 'Категории',
+            'category' => 'Категории',
             'manufacturer' => 'Производитель'
-
 
         ];
     }
@@ -143,4 +145,26 @@ class Product extends \yii\db\ActiveRecord
         return $this->hasOne(StockStatus::className(), ['id' => 'stock_status_id']);
     }
 
+    public function getCategory(){
+        return ArrayHelper::map(CategoriesProduct::find()->where(['product_id'=>$this->id])->all(), 'category_id', 'category_id');
+    }
+
+    public function afterSave($insert, $changedAttributes){
+        parent::afterSave($insert, $changedAttributes);
+
+        $this->setCategory();
+
+    }
+
+    private function setCategory(){
+        CategoriesProduct::deleteAll(['product_id'=>$this->id]);
+        foreach ($this->category as $category){
+            $catProd = new CategoriesProduct();
+            $catProd->product_id = $this->id;
+            $catProd->category_id = $category;
+            $catProd->save();
+        }
+
+        return true;
+    }
 }

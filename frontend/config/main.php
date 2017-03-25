@@ -44,10 +44,10 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
-                '<_c:[\w\-]+>/<alias:\[\w\-]>' => '<_c>/view',
+                'category/<alias>' => 'category/<alias>',
                 '<_c:[\w\-]+>' => '<_c>/index',
                 '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_c>/<_a>',
-                '<_c:[\w\-]+>/<_a:[\w\-]+>/<alias:\[\w\-]>' => '<_c>/<_a>',
+                '<_c:[\w\-]+>/<_a:[\w\-]+>/<alias>' => '<_c>/<_a>/<alias>',
             ],
         ],
     ],

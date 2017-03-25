@@ -7,6 +7,7 @@ use Yii;
 use common\models\Product;
 use backend\models\ProductSearch;
 use yii\base\Model;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -17,6 +18,7 @@ use yii\filters\VerbFilter;
  */
 class ProductController extends Controller
 {
+    private $categoriesProducts;
     /**
      * @inheritdoc
      */
@@ -90,15 +92,14 @@ class ProductController extends Controller
     public function actionUpdate($id)
     {
         $model = Product::find()->where($id)->one();
-
         if (!$model) {
             throw new NotFoundHttpException("The product was not found.");
         }
+        $model->category = $model->getCategory();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-
-                return $this->redirect(['view', 'id' => $model->id]);
+             return $this->redirect(['view', 'id' => $model->id]);
 
         } else {
             return $this->render('update', [

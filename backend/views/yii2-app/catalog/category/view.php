@@ -2,9 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use common\models\Category;
 use dmstr\widgets\Alert;
 use yii\helpers\Url;
+use backend\controllers\catalog\ManufacturersController;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Category */
@@ -54,7 +54,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'description:html',
             'parent.name',
-            'status:boolean',
+            [
+                'attribute'=>'status',
+                'value'=>ManufacturersController::getStatusLabel($model),
+            ],
             'metatitle',
             'metaDescription',
             'keywords',
