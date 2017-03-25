@@ -22,7 +22,7 @@ class m170325_091112_create_attribute_table extends Migration
             'type'=>$this->integer(11),
         ], $tableOptions);
 
-        $this->createIndex('idx_attribute_type', '{{%attribute}}', 'tupe');
+        $this->createIndex('idx_attribute_type', '{{%attribute}}', 'type');
 
         $this->addForeignKey('fk_attribute_type_attribute_group_id', '{{%attribute}}', 'type', '{{%attribute_group}}', 'id', 'CASCADE');
     }
