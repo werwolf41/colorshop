@@ -928,7 +928,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             'name'=>$category->name,
                             'image' => $category->image,
-                            'category' => 'items',
+                            'category' => 'all',
                             'cacheSeconds' => 'auto',
                         ]);
                         ?>
